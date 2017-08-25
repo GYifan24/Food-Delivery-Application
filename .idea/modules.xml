@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/food-delivery-application.iml" filepath="$PROJECT_DIR$/.idea/food-delivery-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-management/order-management.iml" filepath="$PROJECT_DIR$/order-management/order-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/payment-management/payment-service.iml" filepath="$PROJECT_DIR$/payment-management/payment-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/restaurant-management/restaurant-management.iml" filepath="$PROJECT_DIR$/restaurant-management/restaurant-management.iml" />
+    </modules>
+  </component>
+</project>

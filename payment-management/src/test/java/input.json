@@ -1,0 +1,13 @@
+[
+  {
+    "totalPrice": "25.33",
+    "paymentId": "1002",
+    "isSuccess": true,
+    "timestamp": "2017-04-01T18:50:35Z",
+    "CreditCardInfo":{
+      "cardNum": "1123144212451567",
+      "expirationDate":"01/24/2020",
+      "securityCode": 333
+    }
+  }
+]
