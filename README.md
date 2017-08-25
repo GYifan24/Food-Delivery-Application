@@ -9,9 +9,10 @@ Services:
 
 Restaurant Management Service:
 
-API Overview                
-POST--------->/restaurants------------>Upload a list of restaurants
-GET---------->/restaurants/{name}----->Get restaurant's menu by restaurant's name
+API Overview
+
+1. POST--------->/restaurants------------>Upload a list of restaurants
+2. GET---------->/restaurants/{name}----->Get restaurant's menu by restaurant's name
 
 DATABASE:
 MongoDB: Save restaurants including their menus information to database.
