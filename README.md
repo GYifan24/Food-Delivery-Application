@@ -7,6 +7,7 @@ Services:
 3. Payment Management Service
 
 
+
 1. Restaurant Management Service:
 
 1.1 API Overview
@@ -17,6 +18,8 @@ Services:
 1.2 DATABASE:
 MongoDB: Save restaurants including their menus information to database.
 
+
+
 2. Order Management Service:
 
 2.1 API Overview
@@ -25,7 +28,10 @@ MongoDB: Save restaurants including their menus information to database.
 2.2 DATABASE:
 MySQL: Save order information after payment service return payment status(including order is success or not)
 
+
+
 3. Payment Management Service:
+
 3.1 API Overview
 POST----->/restaurants/{name}/order/payment------------>Send payment info to order management service. Save payment info to database
                  
