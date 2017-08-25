@@ -6,7 +6,7 @@ Services:
 2. Order Management Service
 3. Payment Management Service
 
-
+API and architecture design
 
 1. Restaurant Management Service:
 
