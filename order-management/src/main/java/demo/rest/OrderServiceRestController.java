@@ -13,7 +13,7 @@ public class OrderServiceRestController {
     @Autowired
     OrderingService orderingService;
 
-    @RequestMapping(value = "/Order", method = RequestMethod.POST)
+    @RequestMapping(value = "/order", method = RequestMethod.POST)
     public double placeAnOrder(Order order){
         orderingService.placeAnOrder(order);
         // if order failed, return -1;
