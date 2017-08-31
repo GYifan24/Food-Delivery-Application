@@ -1,5 +1,6 @@
 package demo.rest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import demo.model.Order;
 import demo.model.PaymentDto;
 import demo.service.OrderingService;
@@ -16,12 +17,6 @@ public class OrderServiceRestController {
 
     @RequestMapping(value = "/order", method = RequestMethod.POST)
     public PaymentDto placeAnOrder(Order order){
-        // json creator create an object
-        // save to DB
-        //create an order
-
-        //paymentInfo object
-        // send
         return orderingService.placeAnOrder(order);
     }
 

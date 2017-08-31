@@ -50,9 +50,10 @@ public class Order {
                  @JsonProperty("items") List<Item> items,
                  @JsonProperty("ccInfo") CreditCardInfo ccInfo){
         this.deliveryAddress = deliveryAddress;
-        this.items = items;
-        this.ccInfo = ccInfo;
+        this.items = new ArrayList<>(items);
+        this.ccInfo = new CreditCardInfo(ccInfo.getCardNum(), ccInfo.getExpirationDate(), ccInfo.getSecurityCode());
     }
+
 
     public void setTotalPrice(){
         for(Item i: items)
