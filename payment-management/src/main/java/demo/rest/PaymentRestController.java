@@ -13,7 +13,7 @@ public class PaymentRestController {
     @Autowired
     PaymentService paymentService;
 
-    @RequestMapping(value = "/order/payment", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/payment", method = RequestMethod.POST)
     public PaymentInfo makePayment(@RequestBody PaymentInfo paymentInfo){
         return this.paymentService.makePayment(paymentInfo);
     }

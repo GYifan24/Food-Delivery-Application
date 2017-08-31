@@ -35,8 +35,8 @@ public class Restaurant {
 //            @AttributeOverride(name = "price", column = @Column(name = "price"))
 //    })
 //    @OneToMany(mappedBy = "menu")
-//    @OneToMany(cascade = {CascadeType.ALL})
-    @OneToMany(targetEntity = Item.class, mappedBy = "Resturant", fetch = FetchType.EAGER)
+//    @OneToMany(cascade = {CascadeType.ALL}
+//    @OneToMany(targetEntity = Item.class, mappedBy = "Restaurant", fetch = FetchType.EAGER)
     private List<Item> menu;
 
     @JsonCreator
@@ -49,10 +49,4 @@ public class Restaurant {
         this.address = address;
         this.menu = menu;
     }
-
-
-
-
-
-
 }

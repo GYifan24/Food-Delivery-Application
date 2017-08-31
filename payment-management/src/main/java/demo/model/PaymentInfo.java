@@ -3,8 +3,7 @@ package demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -17,7 +16,11 @@ public class PaymentInfo {
     @Embedded
     private CreditCardInfo ccInfo;
     private boolean isSuccess;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long paymentId;
-    private Date timestamp;
+
+    private Date timestamp = new Date();
 
 }

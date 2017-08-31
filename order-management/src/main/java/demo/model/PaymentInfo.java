@@ -12,7 +12,6 @@ public class PaymentInfo {
 
     private long orderId;
     private double totalPrice;
-    @Embedded
     private CreditCardInfo ccInfo;
     private boolean isSuccess;
     private long paymentId;

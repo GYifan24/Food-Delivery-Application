@@ -6,13 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 
 @Data
 @NoArgsConstructor
 public class Item {
 
+
+    private long itemId;
     private String itemName;
 
     private double price;

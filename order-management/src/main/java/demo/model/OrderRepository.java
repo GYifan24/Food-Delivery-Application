@@ -1,14 +1,15 @@
 package demo.model;
 
-import org.jboss.logging.annotations.Param;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 
-public interface OrderRepository extends JpaRepository<Order, String> {
+import java.util.Date;
+
+public interface OrderRepository extends JpaRepository<Order, Integer> {
 //    void deleteById(@Param String id);
-
-    Order findById(@Param long id);
-
-
+//
+//    Order findById(@Param long id);
+    Order findOrderByTimestamp(@Param("timestamp") Date timestamp);
+    Order findById(@Param("id") int id);
 
 }

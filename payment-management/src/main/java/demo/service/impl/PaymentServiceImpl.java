@@ -4,6 +4,7 @@ import demo.model.PaymentInfo;
 import demo.model.PaymentRepository;
 import demo.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -13,12 +14,9 @@ import java.util.Date;
 @Slf4j
 public class PaymentServiceImpl implements PaymentService{
 
+    @Autowired
     private PaymentRepository repository;
 
-    @Override
-    public void savePaymentInfo(PaymentInfo paymentInfo) {
-        this.repository.save(paymentInfo);
-    }
 
     @Override
     public boolean isValidCard(PaymentInfo paymentInfo) {
@@ -30,10 +28,13 @@ public class PaymentServiceImpl implements PaymentService{
     public PaymentInfo makePayment(PaymentInfo paymentInfo) {
         if(isValidCard(paymentInfo)){
             paymentInfo.setSuccess(true);
-            paymentInfo.setPaymentId((long)Math.random());
-            paymentInfo.setTimestamp(new Date());
+            //save to db
+            repository.save(paymentInfo);
+            PaymentInfo paymentInfoWithId = repository.findPaymentInfoByOrderId(paymentInfo.getOrderId());
+            return paymentInfoWithId;
         }
-        return paymentInfo;
-    }
+        else
+            return null;
 
+    }
 }

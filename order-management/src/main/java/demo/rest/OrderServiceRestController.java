@@ -14,9 +14,16 @@ public class OrderServiceRestController {
     @Autowired
     OrderingService orderingService;
 
-    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    @RequestMapping(value = "/order", method = RequestMethod.POST)
     public PaymentDto placeAnOrder(Order order){
+        // json creator create an object
+        // save to DB
+        //create an order
+
+        //paymentInfo object
+        // send
         return orderingService.placeAnOrder(order);
     }
+
 
 }
