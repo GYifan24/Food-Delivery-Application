@@ -1,51 +1,39 @@
 package demo.service.impl;
 
-import demo.model.CreditCardInfo;
 import demo.model.PaymentInfo;
+import demo.model.PaymentRepository;
 import demo.service.PaymentService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Date;
 
+
+@Service
+@Slf4j
 public class PaymentServiceImpl implements PaymentService{
-    @Autowired
-    CreditCardRepository creditCardRepository;
+
+    private PaymentRepository repository;
 
     @Override
-    public void upload(List<CreditCardInfo> creditCardInfoList) {
-        this.creditCardRepository.save(creditCardInfoList);
+    public void savePaymentInfo(PaymentInfo paymentInfo) {
+        this.repository.save(paymentInfo);
     }
 
     @Override
-    public boolean isValidCard(CreditCardInfo creditCardInfo) {
-        CreditCardInfo userCard = this.creditCardRepository.findCreditCardInfoByCardNum(creditCardInfo.getCardNum());
-        if(userCard != null)
-            if(userCard.getExpirationDate().hashCode() == creditCardInfo.getExpirationDate().hashCode()
-                    && userCard.getSecurityCode() == creditCardInfo.getSecurityCode())
-                return true;
-        return false;
+    public boolean isValidCard(PaymentInfo paymentInfo) {
+        // should check with bank's API to see whether this is a valid card
+        return true;
     }
 
     @Override
-    public void makePayment(PaymentInfo paymentInfo) {
-
-
-        // call bank
-        Chase.api.change("api.chase.com/us/credit-card/charge/?dajflk;akl&djflkjad;f");
-
-        saveToDB()
-
-
-        if success {
-            return ok
+    public PaymentInfo makePayment(PaymentInfo paymentInfo) {
+        if(isValidCard(paymentInfo)){
+            paymentInfo.setSuccess(true);
+            paymentInfo.setPaymentId((long)Math.random());
+            paymentInfo.setTimestamp(new Date());
         }
-        else {
-            return not_ok
-        }
-        // if sccess
-        if(isValidCard(paymentInfo.getCardInfo()))
-            paymentInfo.setSucceed(true);
-        else
-            paymentInfo.setSucceed(false);
+        return paymentInfo;
     }
+
 }

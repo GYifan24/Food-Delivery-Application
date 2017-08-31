@@ -1,47 +1,48 @@
 package demo.service.impl;
 
-import demo.model.Item;
-import demo.model.Order;
-import demo.model.OrderRepository;
+import demo.model.*;
 import demo.service.OrderingService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+@Service
+@Slf4j
 public class OrderingServiceImpl implements OrderingService {
 
     OrderRepository orderRepository;
-    @Override
-    public void deleteByOrderId(String id) {
 
-    }
+    @Autowired
+    private RestTemplate restTemplate;
 
-    @Override
-    public Order findAnOrder(String id) {
-        return null;
-    }
+    private String paymentService = "localhost:9006";
 
     @Override
-    public void placeAnOrder(Order order) {
-        // order.price + id -> payment service
-        // rest template
+    public PaymentDto placeAnOrder(Order order) {
 
-        // sanity check if the order is valid
+        log.info("Read In order information" + order.getOrderId());
+        PaymentInfo paymentInfo = new PaymentInfo(order.getOrderId(),
+                order.getTotalPrice(), order.getCcInfo(), false, 0, null);
 
-        // call payment to charge
-//        paymentService.makePayment(order.getCcInfo(), order.getTotalPrice());
-//
-//        if returned_true {
-//            saveToDB;
-//            return ETA;
-//        }
-//        else {
-//            saveToDB;
-//            return "please try another card and order again"
+        log.info("Send payment info to payment Service");
+        ResponseEntity<PaymentInfo> response =
+                this.restTemplate.getForEntity(paymentService + "/order/payment", PaymentInfo.class, paymentInfo);
+
+        log.info("Get payment service response");
+        double EDT = Math.random() * 55 + 5;
+        PaymentDto dto = new PaymentDto(response.getBody().isSuccess(), response.getBody().getPaymentId(),
+                response.getBody().getTimestamp(), EDT);
+        if(response.getBody().isSuccess()) {
+            order.setPaymentId(dto.getPaymentId());
+            order.setSuccess(true);
+            order.setTimestamp(dto.getTimestamp());
+            log.info("save order %long to database" + order.getOrderId());
+            orderRepository.save(order);
         }
-
-    @Override
-    public void saveAnOrder(Order order) {
-
+        return dto;
     }
+
 }
 

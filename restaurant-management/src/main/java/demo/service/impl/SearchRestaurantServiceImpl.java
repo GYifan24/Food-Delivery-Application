@@ -1,6 +1,6 @@
 package demo.service.impl;
 
-import demo.model.Menu;
+import demo.model.Item;
 import demo.model.Restaurant;
 import demo.model.RestaurantRepository;
 import demo.service.SearchRestaurantService;
@@ -19,11 +19,13 @@ public class SearchRestaurantServiceImpl implements SearchRestaurantService {
 
     @Override
     public void saveRestaurants(List<Restaurant> restaurants) {
+
         this.restaurantRepository.save(restaurants);
     }
 
     @Override
-    public Menu findByName(String name, Pageable pageable) {
+    public List<Item> findByName(String name, Pageable pageable) {
+
         Page<Restaurant> restaurant = restaurantRepository.findRestaurantByName(name, pageable);
         return restaurant.getContent().get(0).getMenu();
     }

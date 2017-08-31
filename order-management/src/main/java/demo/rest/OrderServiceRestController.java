@@ -1,6 +1,7 @@
 package demo.rest;
 
 import demo.model.Order;
+import demo.model.PaymentDto;
 import demo.service.OrderingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +14,9 @@ public class OrderServiceRestController {
     @Autowired
     OrderingService orderingService;
 
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
-    public double placeAnOrder(Order order){
-        orderingService.placeAnOrder(order);
-        // if order failed, return -1;
-        // if order succeed, return ETA;
-        return -1;
+    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    public PaymentDto placeAnOrder(Order order){
+        return orderingService.placeAnOrder(order);
     }
-
 
 }

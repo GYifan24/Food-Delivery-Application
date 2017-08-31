@@ -2,22 +2,22 @@ package demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 
 import javax.persistence.Embedded;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
+@Entity
 public class PaymentInfo {
-    @Id
-    @Generated
-    private String paymentId;
+
+    private long orderId;
+    private double totalPrice;
     @Embedded
-    private CreditCardInfo cardInfo;
-    private double totalPaid;
+    private CreditCardInfo ccInfo;
     private boolean isSuccess;
-    private Date timestamp = new Date();
+    private long paymentId;
+    private Date timestamp;
 
 }

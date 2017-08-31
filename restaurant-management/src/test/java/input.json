@@ -3,33 +3,60 @@
     "id": "12345",
     "name": "QQ noodle",
     "address": "333, Ave, Palo Alto",
-    "Menu":{
-      "Beef Noodle": "13.99",
-      "lamb Noodle": "14.99",
-      "chicken Noodle": "10.00"
-    }
+    "menu": [
+      {
+        "itemName": "Beef Noodle",
+        "price": 13.99
+      },
+      {
+        "itemName": "Lamb Noodle",
+        "price": 14.99
+      },
+      {
+        "itemName": "Chicken Noodle",
+        "price": 10.00
+      }
+    ]
   },
   {
-    "id": "12346",
+    "id": "12345",
     "name": "BB noodle",
-    "address": "334, Ave, Palo Alto",
-    "Menu": {
-      "Egg Noodle": "11.99",
-      "lamb Noodle": "14.99",
-      "spicy chicken": "10.00",
-      "spicy beef": "12.99"
-    }
+    "address": "333, Ave, Palo Alto",
+    "menu": [
+      {
+        "itemName": "Beef Noodle",
+        "price": 18.99
+      },
+      {
+        "itemName": "Lamb Noodle",
+        "price": 4.99
+      },
+      {
+        "itemName": "Egg Noodle",
+        "price": 9.00
+      }
+    ]
   },
   {
-    "id": "12347",
+    "id": "12345",
     "name": "Xiao Fei Yang",
-    "address": "334, Ave, Palo Alto",
-    "Menu":{
-      "Beef": "11.99",
-      "Noodle": "14.99",
-      "chicken": "10.00",
-      "Mushroom": "9.00"
-    }
+    "address": "333, Ave, Palo Alto",
+    "menu": [
+      {
+        "itemName": "Beef",
+        "price": 18.99
+      },
+      {
+        "itemName": "Lamb Noodle",
+        "price": 4.99
+      },
+      {
+        "itemName": "Egg Noodle",
+        "price": 9.00
+      }
+    ]
   }
 
+
 ]
+

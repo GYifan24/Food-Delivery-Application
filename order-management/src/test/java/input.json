@@ -1,15 +1,26 @@
 [
   {
-    "id": "0001",
+    "orderId": 0,
     "note": "no onion",
     "totalPrice": "25.33",
-    "paymentId": "1002",
-    "isSuccess": false,
-    "Menu": {
-      "Egg Noodle": "11.99",
-      "spicy beef": "12.99"
-    },
-    "CreditCardInfo":{
+    "deliveryAddress": "ABC, Palo Alto",
+    "items": [
+      {
+        "itemId": "001",
+        "itemName":"Egg Noodle",
+        "note": "no onin",
+        "price": 7.99,
+        "quantity": 2
+      },
+      {
+        "itemId": "002",
+        "itemName":"Beef Noodle",
+        "note": "no onin",
+        "price": 17.99,
+        "quantity": 1
+      }
+    ],
+    "ccInfo":{
       "cardNum": "1123144212451567",
       "expirationDate":"01/24/2020",
       "securityCode": 333
