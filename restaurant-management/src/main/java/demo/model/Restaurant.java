@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "Restaurants")
+@Table(name = "restaurant")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Restaurant {
 
@@ -43,5 +43,15 @@ public class Restaurant {
         this.name = name;
         this.address = address;
         this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", items=" + items +
+                '}';
     }
 }
