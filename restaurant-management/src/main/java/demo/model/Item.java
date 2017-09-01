@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "item")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-//@Access(AccessType.FIELD)
 public class Item {
 
     @Id
@@ -25,6 +24,9 @@ public class Item {
     private double price;
     private int quantity;
 
+    public Item() {
+
+    }
 
     @JsonCreator
     public Item(@JsonProperty("itemName") String itemName,
