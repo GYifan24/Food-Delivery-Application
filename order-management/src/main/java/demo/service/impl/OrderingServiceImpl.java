@@ -20,22 +20,23 @@ public class OrderingServiceImpl implements OrderingService {
 //    @Autowired
     private RestTemplate restTemplate = new RestTemplate();
 
-    private String paymentService = "localhost:9006";
+    private String paymentService = "http://localhost:9009";
 
     @Override
     public PaymentDto placeAnOrder(Order order) {
         //save to database
         orderRepository.save(order);
 //        Order orderWithId = orderRepository.findOrderByTimestamp(order.getTimestamp());
-        log.info("Read In order information" + order.getId());
+        log.info("Order Service: Read In order information" + order.getId());
         PaymentInfo paymentInfo = new PaymentInfo(order.getId(),
                 order.getTotalPrice(), order.getCcInfo(), false, 0, order.getTimestamp());
 
-        log.info("Send payment info to payment Service");
+        log.info("Order Service: Send payment info to payment Service");
         ResponseEntity<PaymentInfo> response =
-                this.restTemplate.getForEntity(paymentService + "/order/payment", PaymentInfo.class, paymentInfo);
+                this.restTemplate.postForEntity(paymentService + "/order/payment", paymentInfo, PaymentInfo.class);
 
-        log.info("Get payment service response" + response);
+
+        log.info("Order Service: Get payment service response" + response);
         double EDT = Math.random() * 55 + 5;
         PaymentDto dto = new PaymentDto(response.getBody().isSuccess(), response.getBody().getPaymentId(),
                 response.getBody().getTimestamp(), EDT);

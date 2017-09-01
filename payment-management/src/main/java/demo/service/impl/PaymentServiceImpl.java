@@ -26,15 +26,15 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public PaymentInfo makePayment(PaymentInfo paymentInfo) {
-        log.info("Payment Info from order service" + paymentInfo);
+        log.info("Payment Service: Payment Info from order service" + paymentInfo);
         if(isValidCard(paymentInfo)){
             paymentInfo.setSuccess(true);
             repository.save(paymentInfo);
-            log.info("PaymentInfo:" + paymentInfo);
+            log.info("Payment Service: PaymentInfo:" + paymentInfo);
             return paymentInfo;
         }
         else {
-            log.error("Payment failed");
+            log.error("Payment Service: Payment failed");
             return null;
         }
 

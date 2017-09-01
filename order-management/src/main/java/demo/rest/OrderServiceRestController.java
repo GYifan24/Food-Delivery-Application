@@ -15,9 +15,8 @@ public class OrderServiceRestController {
     @Autowired
     OrderingService orderingService;
 
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
+    @RequestMapping(path = "/order", method = RequestMethod.POST)
     public PaymentDto placeAnOrder(@RequestBody Order order){
-        System.out.println(order);
         return orderingService.placeAnOrder(order);
     }
 
