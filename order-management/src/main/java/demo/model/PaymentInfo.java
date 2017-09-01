@@ -5,11 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embedded;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "order_payment_info")
 public class PaymentInfo {
 
     private int orderId;

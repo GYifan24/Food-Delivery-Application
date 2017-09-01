@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "item")
+@Table(name = "restaurant_item")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Item {
 

@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "Payment_INFO")
+@Table(name = "payment")
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PaymentInfo {
@@ -48,15 +48,4 @@ public class PaymentInfo {
         this.ccInfo = ccInfo;
     }
 
-    @Override
-    public String toString() {
-        return "PaymentInfo{" +
-                "orderId=" + orderId +
-                ", totalPrice=" + totalPrice +
-                ", ccInfo=" + ccInfo +
-                ", isSuccess=" + isSuccess +
-                ", paymentId=" + paymentId +
-                ", timestamp=" + timestamp +
-                '}';
-    }
 }

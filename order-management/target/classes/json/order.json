@@ -1,0 +1,21 @@
+{
+  "note": "no onion",
+  "deliveryAddress": "ABC, Palo Alto",
+  "ccInfo":{
+    "cardNum": "1123144212451567",
+    "expirationDate": "01/24/2020",
+    "securityCode": 333
+  },
+  "items": [
+    {
+      "itemName":"Egg Noodle",
+      "price": 7.99,
+      "quantity": 2
+    },
+    {
+      "itemName":"Beef Noodle",
+      "price": 17.99,
+      "quantity": 1
+    }
+  ]
+}

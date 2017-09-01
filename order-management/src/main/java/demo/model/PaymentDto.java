@@ -12,6 +12,6 @@ public class PaymentDto {
     private boolean isSuccess;
     private long paymentId;
     private Date timestamp = new Date();
-    private double EDT;
+    private int EDT;
 
 }

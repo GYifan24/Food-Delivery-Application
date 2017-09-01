@@ -64,18 +64,10 @@ public class Order {
         this.ccInfo = ccInfo;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", note='" + note + '\'' +
-                ", totalPrice=" + totalPrice +
-                ", paymentId=" + paymentId +
-                ", isSuccess=" + isSuccess +
-                ", deliveryAddress='" + deliveryAddress + '\'' +
-                ", timestamp=" + timestamp +
-                ", items=" + items +
-                ", ccInfo=" + ccInfo +
-                '}';
+    public void setTotalPrice(Order order){
+        for(Item i : order.getItems()){
+            totalPrice += i.getPrice();
+        }
     }
+
 }
