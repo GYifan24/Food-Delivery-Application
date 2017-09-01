@@ -13,27 +13,37 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "OrderTable")
+@Table(name = "Order_Table")
 @NoArgsConstructor
-//@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "order_id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id", unique = true, nullable = false)
     private int id;
 
+    @Column(name = "note")
     private String note;
     private double totalPrice;
 
+    @Column(name = "paymentId")
     private long paymentId;
+
+    @Column(name = "isSuccess")
     boolean isSuccess;
+
+    @Column(name = "deliveryAddress")
     private String deliveryAddress;
+
+    @Column(name = "timestamp")
     private Date timestamp = new Date();
 
     @OneToMany
-    @JoinTable(name = "items", joinColumns = @JoinColumn(name = "order_id"),
-    inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(
+            name = "order_to_item",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items = new ArrayList<>();
 
     @Embedded
@@ -50,30 +60,22 @@ public class Order {
                  @JsonProperty("items") List<Item> items,
                  @JsonProperty("ccInfo") CreditCardInfo ccInfo){
         this.deliveryAddress = deliveryAddress;
-        this.items = new ArrayList<>(items);
-        this.ccInfo = new CreditCardInfo(ccInfo.getCardNum(), ccInfo.getExpirationDate(), ccInfo.getSecurityCode());
-    }
-
-
-    public void setTotalPrice(){
-        for(Item i: items)
-            totalPrice += i.getPrice();
+        this.items = items;
+        this.ccInfo = ccInfo;
     }
 
     @Override
     public String toString() {
-        String result = String.format(
-                "Order[id=%d, deliveryAddress='%s']%n",
-                id, deliveryAddress);
-        if (items != null) {
-            for(Item i : items) {
-                result += String.format(
-                        "Item[id=%d, name='%s']%n",
-                        i.getId(), i.getItemName());
-            }
-        }
-
-        return result;
+        return "Order{" +
+                "id=" + id +
+                ", note='" + note + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", paymentId=" + paymentId +
+                ", isSuccess=" + isSuccess +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", timestamp=" + timestamp +
+                ", items=" + items +
+                ", ccInfo=" + ccInfo +
+                '}';
     }
-
 }

@@ -10,18 +10,21 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "ItemsTable")
+@Table(name = "item")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
+//@Access(AccessType.FIELD)
 public class Item {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "item_id")
     private int id;
-    private int itemOrderId;
+
     private String itemName;
     private String note;
     private double price;
     private int quantity;
+
 
     @JsonCreator
     public Item(@JsonProperty("itemName") String itemName,
@@ -32,14 +35,14 @@ public class Item {
         this.quantity = quantity;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", itemName='" + itemName + '\'' +
+                ", note='" + note + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
-
-    public void setId(int id){
-        this.id = id;
-    }
-
 }
