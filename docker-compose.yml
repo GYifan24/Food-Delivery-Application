@@ -1,0 +1,21 @@
+mongodb:
+  image: mongo:3.4.4
+  ports:
+    - "27017:27017"
+
+mysql1:
+  image: mysql:5.6
+  environment:
+    MYSQL_ROOT_PASSWORD: "cs504"
+    MYSQL_DATABASE: "orderInfo_db"
+  ports:
+    - "3306:3306"
+
+
+mysql2:
+  image: mysql:5.6
+  environment:
+    MYSQL_ROOT_PASSWORD: "cs504"
+    MYSQL_DATABASE: "bank_db"
+  ports:
+    - "3307:3306"

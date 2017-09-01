@@ -39,7 +39,7 @@ public class Order {
     @Column(name = "timestamp")
     private Date timestamp = new Date();
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "order_to_item",
             joinColumns = @JoinColumn(name = "order_id"),

@@ -5,9 +5,9 @@
   "isSuccess": false,
   "timestamp": "2017-04-01T18:50:35Z",
   "ccInfo":{
-      "cardNum": "1123144212451567",
-      "expirationDate":"01/24/2020",
-      "securityCode": 333
-    }
+    "cardNum": "1123144212451567",
+    "expirationDate":"01/24/2020",
+    "securityCode": 333
+  }
 }
 

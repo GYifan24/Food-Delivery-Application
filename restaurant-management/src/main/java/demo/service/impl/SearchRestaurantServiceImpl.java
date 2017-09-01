@@ -14,19 +14,19 @@ import java.util.List;
 @Service
 public class SearchRestaurantServiceImpl implements SearchRestaurantService {
 
-    @Autowired
-    RestaurantRepository restaurantRepository;
-
-    @Override
-    public void saveRestaurants(List<Restaurant> restaurants) {
-
-        this.restaurantRepository.save(restaurants);
-    }
-
-    @Override
-    public List<Item> findByName(String name, Pageable pageable) {
-
-        Page<Restaurant> restaurant = restaurantRepository.findRestaurantByName(name, pageable);
-        return restaurant.getContent().get(0).getMenu();
-    }
+//    @Autowired
+//    RestaurantRepository restaurantRepository;
+//
+//    @Override
+//    public void saveRestaurants(List<Restaurant> restaurants) {
+//
+//        this.restaurantRepository.save(restaurants);
+//    }
+//
+//    @Override
+//    public List<Item> findByName(String name, Pageable pageable) {
+//
+////        Page<Restaurant> restaurant = restaurantRepository.findRestaurantByName(name, pageable);
+//        return restaurant.getContent().get(0).getMenu();
+//    }
 }

@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class PaymentInfo {
 
-    private long orderId;
+    private int orderId;
     private double totalPrice;
     private CreditCardInfo ccInfo;
     private boolean isSuccess;

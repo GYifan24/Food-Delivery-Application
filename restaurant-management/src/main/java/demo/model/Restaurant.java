@@ -8,6 +8,7 @@ import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,38 +16,32 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(name = "Restaurants")
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Restaurant {
 
     @Id
-    @Generated
-    private String id;
-    @JsonProperty("name")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "restaurant_id", unique = true, nullable = false)
+    private int id;
+
     private String name;
 
-    @JsonProperty("address")
     private String address;
 
 
-    @JsonProperty("menu")
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Restaurant")
-//    @AttributeOverrides({
-//            @AttributeOverride(name = "ItemName", column = @Column(name = "ItemName")),
-//            @AttributeOverride(name = "price", column = @Column(name = "price"))
-//    })
-//    @OneToMany(mappedBy = "menu")
-//    @OneToMany(cascade = {CascadeType.ALL}
-//    @OneToMany(targetEntity = Item.class, mappedBy = "Restaurant", fetch = FetchType.EAGER)
-    private List<Item> menu;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "restaurant_to_item",
+            joinColumns = @JoinColumn(name = "restaurant_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
+    private List<Item> items = new ArrayList<>();
 
     @JsonCreator
-    public Restaurant(@JsonProperty("id") String id,
-                      @JsonProperty("name") String name,
+    public Restaurant(@JsonProperty("name") String name,
                       @JsonProperty("address") String address,
-                      @JsonProperty("menu") List<Item> menu){
-        this.id = id;
+                      @JsonProperty("menu") List<Item> items){
         this.name = name;
         this.address = address;
-        this.menu = menu;
+        this.items = items;
     }
 }
